@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.winter</groupId>
+        <artifactId>Java</artifactId>
+        <version>1.0</version>
+    </parent>
+    <artifactId>Gof23_rpm</artifactId>
+
+    <properties>
+        <build.gof.basedir>/opt/gof-tmp</build.gof.basedir>
+        <build.privlege.username>jw18233</build.privlege.username>
+        <build.privlege.group>jw18233</build.privlege.group>
+        <rpm.plugin.version>jw18233</rpm.plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!--package specified classes under path  includes excludes-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <includes>
+                        <include>**/Behavior/*</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
+            <!--put dependeny jars to specified path-->
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>${rpm.plugin.version}</version>
+                <excutions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>rpm</goal>
+                        </goals>
+                    </execution>
+                </excutions>
+                <configuration>
+                    <release>${project.version}</release>
+                    <copyright>wujianhui</copyright>
+                    <distribution>java proj</distribution>
+                    <group>app</group>
+                    <packager>wujianhui</packager>
+                    <needarch>false</needarch>
+                    <mappings>
+                        <mapping>
+                            <directory>${build.gof.basedir}</directory>
+                            <filemode>755</filemode>
+                            <username>${build.privlege.username}</username>
+                            <groupname>${build.privlege.group}</groupname>
+                        </mapping>
+                        <mapping>
+                            <directory>${build.gof.basedir}/${project.version}</directory>
+                            <filemode>755</filemode>
+                            <username>${build.privlege.username}</username>
+                            <groupname>${build.privlege.group}</groupname>
+                        </mapping>
+
+                        <mapping>
+                            <directory>${build.gof.basedir}/${project.version}/lib</directory>
+                            <filemode>755</filemode>
+                            <username>${build.privlege.username}</username>
+                            <groupname>${build.privlege.group}</groupname>
+                            <sources>
+                                <source>
+                                    <location>
+                                        ${project.build.directory}/lib/
+                                    </location>
+                                </source>
+                                <source>
+                                    <location>
+                                        ${project.basedir}/target/${project.artifactId}-${project.version}.jar
+                                    </location>
+                                </source>
+                            </sources>
+                        </mapping>
+                    </mappings>
+
+                    <preinstallScript>
+                        ${project.basedir}/src/scripts/preinstall.ksh
+                    </preinstallScript>
+                    <postinstallScript>
+                        ${project.basedir}/src/scripts/postinstall.ksh
+                    </postinstallScript>
+                </configuration>
+            </plugin>
+        </plugins>
+
+
+
+    </build>
+
+
+
+</project>

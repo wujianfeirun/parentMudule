@@ -1,0 +1,21 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="server"
+          class="org.springframework.jmx.support.ConnectorServerFactoryBean">
+        <property name="objectName" value="connector:name=iiop"/>
+        <property name="serviceUrl"
+                  value="service:jmx:iiop://localhost/jndi/iiop://localhost:900/myconnector"/>   <!-- annotation Mbean-->
+        <property name="threaded" value="true"/>
+        <property name="daemon" value="true"/>
+        <property name="environment">
+            <map>
+                <entry key="someKey" value="someValue"/>
+            </map>
+        </property>
+
+    </bean>
+
+</beans>

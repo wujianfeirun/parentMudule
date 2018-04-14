@@ -1,0 +1,30 @@
+<beans xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
+      http://www.springframework.org/schema/context  
+      http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.main.jmx.springJmx1"/>
+
+
+    <bean id="registry" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+        <property name="port" value="1099"/>
+    </bean>
+
+
+    <bean id="rmiService" class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="get_user"/>
+        <property name="service" ref="user"/>
+        <property name="serviceInterface" value="com.main.jmx.springJmx1.IUserService"/>
+        <!-- <property name="registryPort" value="1099"/> -->
+        <property name="registry" ref="registry"/>
+
+        <!--  
+        <property name="registryHost"  value="192.168.39.11" /> 
+         -->
+    </bean>
+
+
+</beans>

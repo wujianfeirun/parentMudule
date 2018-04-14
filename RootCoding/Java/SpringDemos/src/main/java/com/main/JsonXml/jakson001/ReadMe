@@ -1,0 +1,10 @@
+
+
+objectMapper.writeValue(System.out, bean);    //将bean对象转换成json对象
+jsonGenerator.writeObject(bean);              //通过调用objectMapper.writeValue进行功能实现
+
+
+objectMapper.readValue（json,Bean.class）     //将json转成bean对象
+不支持直接转list，可以通过array或者map间接转换
+objectMapper.readValue(json, AccountBean[].class)  //转成array，转成list>>>>Arrays.asList()
+

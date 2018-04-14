@@ -9,8 +9,8 @@
 	<version>1.0</version>
 
   <modules>
-	 <!-- <module>rpmModule</module>-->
-	  <module>springModule</module>
+	  <module>SpringDemos</module>
+	  <module>Gof23_rpm</module>
   </modules>
   <build>
   	<resources>  

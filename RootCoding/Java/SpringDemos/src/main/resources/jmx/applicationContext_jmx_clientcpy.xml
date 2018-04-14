@@ -1,0 +1,20 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+    <bean id="serviceClient" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://192.168.1.100:1099/get_user"/>
+        <property name="serviceInterface" value="com.main.jmx.springJmx1.IUserService"/>
+        <property name="lookupStubOnStartup" value="false"/>
+        <property name="refreshStubOnConnectFailure" value="true"/>
+        <property name="cacheStub" value="false"/>
+    </bean>
+
+    <bean id="test" class="com.rmi.client.test.DisplayUser">
+        <property name="uerClient" ref="serviceClient"/>
+    </bean>
+
+
+</beans>  
