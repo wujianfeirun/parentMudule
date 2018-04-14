@@ -1,13 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>wu.test</groupId>
-  <artifactId>ParentModule</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	  <groupId>org.winter</groupId>
+	  <artifactId>RootCoding</artifactId>
+	  <version>1.0</version>
+	  <packaging>pom</packaging>
   <modules>
-  	<module>springModule</module>
-  	<module>jmsModule</module>
-  	<module>rpmModule</module>
+  	<!--<module>springModule</module>-->
+  	<!--<module>rpmModule</module>-->
+	  <module>Java</module>
+	  <module>Web</module>
+	  <module>App</module>
+	  <module>Other</module>
   </modules>
   
   <properties>
