@@ -16,4 +16,7 @@
   <properties>
   	<wholeProject.version>1.0.0</wholeProject.version>
   </properties>
+
+	<dependencies>
+	</dependencies>
 </project>

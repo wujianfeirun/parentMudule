@@ -1,16 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-	  <groupId>org.winter</groupId>
-	  <version/>
-	  <artifactId>RootCoding</artifactId>
-  </parent>
-  <artifactId>Java</artifactId>
+	<groupId>org.winter</groupId>
+  	<artifactId>Java</artifactId>
 	<version>1.0</version>
 
-  <modules>
-	  <module>SpringDemos</module>
-	  <module>Gof23_rpm</module>
-	  <module>MultiThread</module>
-  </modules>
+	<dependencies>
+
+		
+	</dependencies>
 </project>
