@@ -2,9 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
 	  <groupId>org.winter</groupId>
-	  <artifactId>Java</artifactId>
-	  <version>1.0</version>
+	  <version/>
+	  <artifactId>RootCoding</artifactId>
   </parent>
-  <artifactId>springModule</artifactId>
-  
+  <artifactId>Tools</artifactId>
+	<version>1.0</version>
+
 </project>
