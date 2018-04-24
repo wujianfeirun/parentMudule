@@ -15,7 +15,7 @@ public class LambLearn {
         int res = new LambLearn().add(values);
         System.out.println(res);
     }
-
+    //change from new branch
     public int add(List<Integer> values){
         return values.parallelStream().mapToInt(a -> a).sum();
     }
